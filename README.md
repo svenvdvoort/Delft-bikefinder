@@ -21,5 +21,14 @@ Contributions are always nice and are more than welcome. However there is one im
 
 So please don't add Redux, to name something... :P
 
+To build and run this project yourself:
+```bash
+git clone https://github.com/svenvdvoort/Delft-bikefinder.git
+cd Delft-bikefinder
+npm install                # install all dependencies in this folder
+react-native run-android   # to run on an Android device/emulator
+react-native run-ios       # to run on an iOS device/emulator (only on Apple computers)
+```
+
 # License
 For the license, see [LICENSE](LICENSE)
