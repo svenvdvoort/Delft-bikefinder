@@ -1,0 +1,3 @@
+rootProject.name = 'bikefinder'
+
+include ':app'
