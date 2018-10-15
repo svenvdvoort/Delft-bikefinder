@@ -1,5 +1,5 @@
 # Delft-bikefinder
-A small react native application to find your bike at bike storage 2 at Delft Station. Scan the QR-code of your bikespot and it will automagicly safe the location.
+A small React Native application to find your bike at bike storage 2 at Delft Station. Scan the QR-code of your bikespot and it will automagicly save the location.
 
 TODO:
 Get it now on (link)F-Droid and (link)Play Store
@@ -7,7 +7,7 @@ Get it now on (link)F-Droid and (link)Play Store
 ## Features
 - Works completely offline, no accounts etc needed
 - Designed to be simple and useful
-- Always remembers last spot, even if you (accidentally) delete your history
+- Always remembers last spot where you put your bike, even if you (accidentally) delete your history
 
 ## To do
 - [ ] English version
@@ -19,7 +19,7 @@ Contributions are always nice and are more than welcome. However there is one im
 
 > KISS (Keep It Simple Stupid)
 
-So please don't add Redux, to name an something... :P
+So please don't add Redux, to name something... :P
 
 # License
 For the license, see [LICENSE](LICENSE)

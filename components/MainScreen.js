@@ -54,10 +54,6 @@ export default class MainScreen extends React.Component {
     } else {
       locations = JSON.parse(locationsString);
     }
-<<<<<<< HEAD
-=======
-    //remove setState and add AsyncStorage.setItem and updateLocations!
->>>>>>> f2a8cf89706a1d305580dbf93eea43e695b503bb
     if(locations.length < 1) {
       await AsyncStorage.setItem("@BikeStore:locations",
           JSON.stringify([]));
@@ -102,8 +98,4 @@ const styles = StyleSheet.create({
   button: {
     paddingTop: 15,
   }
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> f2a8cf89706a1d305580dbf93eea43e695b503bb

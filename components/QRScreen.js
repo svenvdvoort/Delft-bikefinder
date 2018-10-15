@@ -14,12 +14,9 @@ export default class QRScreen extends React.Component {
     } else {
       const row = parseInt(splittedURL[3].slice(2, 4));
       const spot = parseInt(splittedURL[3].slice(4, 7));
-<<<<<<< HEAD
       if(isNaN(row) || isNaN(spot)) {
         return { row: null, spot: null };
       }
-=======
->>>>>>> f2a8cf89706a1d305580dbf93eea43e695b503bb
       return { row: row, spot: spot};
     }
   }
@@ -76,11 +73,3 @@ export default class QRScreen extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  
-<<<<<<< HEAD
-});
-=======
-});
->>>>>>> f2a8cf89706a1d305580dbf93eea43e695b503bb
