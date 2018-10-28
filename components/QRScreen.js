@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Alert, AsyncStorage, Button, Text, View, StyleSheet } from 'react-native';
+import QRCodeScanner from 'react-native-qrcode-scanner';
 
 export default class QRScreen extends React.Component {
 
@@ -63,11 +64,15 @@ export default class QRScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>QR Screen</Text>
-        <Button
-          title="Locatie toevoegen"
-          color="blue"
-          onPress={() => this.saveLocation("http://ab9.nl/DC10004")}
+        <QRCodeScanner
+          onRead={(e) => this.saveLocation(e.data)}
+          topContent={
+            <Button
+              title="Locatie toevoegen"
+              color="blue"
+              onPress={() => this.saveLocation("http://ab9.nl/DC10004")}
+            />
+          }
         />
       </View>
     );
