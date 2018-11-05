@@ -1,8 +1,16 @@
 import * as React from 'react';
 import { Alert, AsyncStorage, Button, Text, View, StyleSheet } from 'react-native';
 import QRCodeScanner from 'react-native-qrcode-scanner';
+import { RNCamera } from 'react-native-camera';
 
 export default class QRScreen extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      flashlightEnabled: false,
+    };
+  }
 
   static navigationOptions = {
     title: "QR-code scannen",
@@ -20,6 +28,12 @@ export default class QRScreen extends React.Component {
       }
       return { row: row, spot: spot};
     }
+  }
+
+  toggleFlashlight = () => {
+    this.setState({
+      flashlightEnabled: !this.state.flashlightEnabled,
+    });
   }
 
   saveLocation = async (url) => {
@@ -63,17 +77,20 @@ export default class QRScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <QRCodeScanner
-          onRead={(e) => this.saveLocation(e.data)}
-          topContent={
-            <Button
-              title="Locatie toevoegen"
-              color="blue"
-              onPress={() => this.saveLocation("http://ab9.nl/DC10004")}
-            />
-          }
-        />
+      <View style={{flex: 1, justifyContent: 'flex-start'}}>
+        <View style={{padding: 20}}>
+          <Button
+            title="Zaklamp"
+            color={this.state.flashlightEnabled ? "blue" : "grey"}
+            onPress={this.toggleFlashlight}
+          />
+        </View>
+        <View>
+          <QRCodeScanner
+            onRead={(e) => this.saveLocation(e.data)}
+            flashMode={this.state.flashlightEnabled ? RNCamera.Constants.FlashMode.torch : RNCamera.Constants.FlashMode.off}
+          />
+        </View>
       </View>
     );
   }

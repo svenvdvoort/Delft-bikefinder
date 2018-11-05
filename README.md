@@ -12,10 +12,10 @@ Get it now on (link)F-Droid and (link)Play Store
 ## To do
 - [ ] English version
 - [ ] Support for more bike storages (If any of them do have QR-codes? If so let me know!)
-- [ ] Add to the App Store (Apple devices are already supported by the app. As a poor I cannot pay the high fee for the app store sadly. If someone can help me, that would be great!)
+- [ ] Add to the App Store (Apple devices are already supported by the app. However, as a poor student I cannot build/pubish the iOS app)
 
 ## Contributing
-Contributions are always nice and are more than welcome. However there is one important thing to remember:
+Contributions are always nice and are more than welcome. However, there is one important thing to remember:
 
 > KISS (Keep It Simple Stupid)
 
@@ -31,4 +31,4 @@ react-native run-ios       # to run on an iOS device/emulator (only on Apple com
 ```
 
 # License
-For the license, see [LICENSE](LICENSE)
+This project is licensed under the GNU General Public License v3, or, at your option, any later version. For more information see the [LICENSE](LICENSE) file.
