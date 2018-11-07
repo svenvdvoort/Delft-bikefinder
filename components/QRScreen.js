@@ -59,7 +59,9 @@ export default class QRScreen extends React.Component {
       } else {
         locations = JSON.parse(locationsString);
       }
-      const dateString = new Date().toLocaleString();
+      const date = new Date();
+      const dateString = date.getHours()+":"+date.getMinutes().toString().padStart(2, '0')
+        +"   "+date.getDate()+"-"+(date.getMonth()+1)+"-"+date.getFullYear();
       locations.unshift({row: row, spot: spot, date: dateString});
       await AsyncStorage.setItem("@BikeStore:locations", JSON.stringify(locations));
       Alert.alert(
