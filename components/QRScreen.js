@@ -88,7 +88,10 @@ export default class QRScreen extends React.Component {
         <View>
           <QRCodeScanner
             onRead={(e) => this.saveLocation(e.data)}
-            flashMode={this.state.flashlightEnabled ? RNCamera.Constants.FlashMode.torch : RNCamera.Constants.FlashMode.off}
+            cameraProps={{ flashMode:
+              (this.state.flashlightEnabled ? RNCamera.Constants.FlashMode.torch : RNCamera.Constants.FlashMode.off)
+            }}
+            showMarker={true}
           />
         </View>
       </View>
