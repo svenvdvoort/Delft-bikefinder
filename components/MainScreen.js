@@ -60,11 +60,9 @@ export default class MainScreen extends React.Component {
         <View style={styles.button}>
           <AddBikeSpotMenu
             onSubmit={async (row, spot) => {
-              if(row !== "" && spot !== "") {
                 await libbikefinder.saveLocation(row, spot);
                 await this.updateLocations();
-              }
-            }}
+              }}
           />
         </View>
         <View style={styles.button}>

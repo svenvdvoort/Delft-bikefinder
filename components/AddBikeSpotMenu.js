@@ -25,6 +25,7 @@ export default class ListItem extends React.Component {
           style={styles.textinput}
           keyboardType="number-pad"
           maxLength={4}
+          value={this.state.row}
           onChangeText={(value) => this.handleChange("row", value)}
         />
         <Text style={styles.label}>Plek:</Text>
@@ -32,11 +33,17 @@ export default class ListItem extends React.Component {
           style={styles.textinput}
           keyboardType="number-pad"
           maxLength={4}
+          value={this.state.spot}
           onChangeText={(value) => this.handleChange("spot", value)}
         />
         <TouchableOpacity
           style={styles.buttonTO}
-          onPress={() => this.props.onSubmit(this.state.row, this.state.spot)}
+          onPress={() => {
+            if(this.state.row !== "" && this.state.spot !== "") {
+              this.props.onSubmit(this.state.row, this.state.spot);
+              this.setState({row: "", spot: ""});
+            }
+          }}
         >
           <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
