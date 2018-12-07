@@ -2,37 +2,17 @@ import * as React from 'react';
 import { Alert, AsyncStorage, Button, Text, View, StyleSheet } from 'react-native';
 
 import LocationsList from './LocationsList';
+import AddBikeSpotMenu from './AddBikeSpotMenu';
+import libbikefinder from '../lib/libbikefinder';
 
 export default class MainScreen extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      locations: [],
-    };
-    this.props.navigation.addListener('willFocus', this.updateLocations);
-  }
-
-  static navigationOptions = {
-    title: "Waar staat mijn fiets?",
-  }
-
-  componentWillMount() {
-    this.updateLocations();
-  }
-
   updateLocations = async () => {
-    const locationsString = await AsyncStorage.getItem("@BikeStore:locations");
-    var locations;
-    if(locationsString == null) {
-      locations = [];
-    } else {
-      locations = JSON.parse(locationsString);
-    }
+    const locations = await libbikefinder.getLocations();
     this.setState({
       locations: locations
     });
-  }
+  };
 
   removeSure = () => {
     Alert.alert(
@@ -44,23 +24,26 @@ export default class MainScreen extends React.Component {
       ],
       { cancelable: false }
     );
-  }
+  };
 
   removeLocations = async () => {
-    const locationsString = await AsyncStorage.getItem("@BikeStore:locations");
-    var locations;
-    if(locationsString == null) {
-      locations = [];
-    } else {
-      locations = JSON.parse(locationsString);
-    }
-    if(locations.length < 1) {
-      await AsyncStorage.setItem("@BikeStore:locations",
-          JSON.stringify([]));
-    } else {
-      await AsyncStorage.setItem("@BikeStore:locations",
-          JSON.stringify([locations[0]]));
-    }
+    await libbikefinder.removeLocations();
+    this.updateLocations();
+  };
+
+  static navigationOptions = {
+    title: "Waar staat mijn fiets?",
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      locations: [],
+    };
+    this.props.navigation.addListener('willFocus', this.updateLocations);
+  }
+
+  componentWillMount() {
     this.updateLocations();
   }
 
@@ -72,6 +55,16 @@ export default class MainScreen extends React.Component {
             title="Scan QR-code"
             color="blue"
             onPress={() => this.props.navigation.navigate('QRScreen')}
+          />
+        </View>
+        <View style={styles.button}>
+          <AddBikeSpotMenu
+            onSubmit={async (row, spot) => {
+              if(row !== "" && spot !== "") {
+                await libbikefinder.saveLocation(row, spot);
+                await this.updateLocations();
+              }
+            }}
           />
         </View>
         <View style={styles.button}>
